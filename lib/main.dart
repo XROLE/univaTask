@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:univa_task/app/core/di/service_locator.dart';
 import 'package:univa_task/ui/home_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await setUpServiceLocator();
   runApp(const MyApp());
 }
 
