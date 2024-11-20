@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:univa_task/app/core/di/service_locator.dart';
 import 'package:univa_task/data/remote/task_service.dart';
+import 'package:univa_task/ui/auth/auth_page.dart';
 import 'package:univa_task/ui/base/base_view.dart';
 import 'package:univa_task/ui/home/home_view_model.dart';
+import 'package:univa_task/ui/widgets/action_button.dart';
 import 'package:univa_task/ui/widgets/task_widget.dart';
+import 'package:univa_task/utils/app_colors.dart';
 import 'package:univa_task/utils/app_flushbar.dart';
 import 'package:univa_task/utils/app_text_style.dart';
 
@@ -37,20 +40,85 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text("Tasks", style: AppTextStyle.title()),
-                      IconButton(onPressed: () {}, icon: const Icon(Icons.menu))
+                      IconButton(
+                          onPressed: () {
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    content: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Text(
+                                              "Logout",
+                                              textAlign: TextAlign.start,
+                                              style: AppTextStyle.title(
+                                                  fontSize: 22),
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(height: 30),
+                                        Text(
+                                          "Are you sure you want to log out?",
+                                          textAlign: TextAlign.center,
+                                          style: AppTextStyle.subTitle(
+                                              fontweight: FontWeight.w400,
+                                              fontSize: 16),
+                                        ),
+                                        const SizedBox(height: 20),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            SizedBox(
+                                              width: 100,
+                                              child: ActionButton(
+                                                  title: "Canceal",
+                                                  bgColor: AppColors.green
+                                                      .withOpacity(.8),
+                                                  onTap: () {
+                                                    Navigator.pop(context);
+                                                  }),
+                                            ),
+                                            SizedBox(
+                                              width: 100,
+                                              child: ActionButton(
+                                                  title: "Continue",
+                                                  bgColor: AppColors.red,
+                                                  onTap: () {
+                                                    Navigator.pushReplacement(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                const AuthPage()));
+                                                  }),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                });
+                          },
+                          icon: const Icon(Icons.menu))
                     ],
                   ),
                   if (model.tasks.isNotEmpty)
                     ListView.builder(
-                      padding: EdgeInsets.symmetric(vertical: size.height * .02),
-                      shrinkWrap: true,
+                        padding:
+                            EdgeInsets.symmetric(vertical: size.height * .02),
+                        shrinkWrap: true,
                         itemCount: model.tasks.length,
                         itemBuilder: (context, index) {
                           return Column(
                             children: [
                               TaskWidget(task: model.tasks[index]),
-                              if(index != model.tasks.length - 1)
-                              const Divider()
+                              if (index != model.tasks.length - 1)
+                                const Divider()
                             ],
                           );
                         }),
