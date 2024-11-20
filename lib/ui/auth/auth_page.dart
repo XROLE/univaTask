@@ -8,6 +8,7 @@ import 'package:univa_task/ui/widgets/app_logo.dart';
 import 'package:univa_task/ui/widgets/custome_text_input.dart';
 import 'package:univa_task/ui/widgets/unfocus_widget.dart';
 import 'package:univa_task/utils/app_colors.dart';
+import 'package:univa_task/utils/app_flushbar.dart';
 import 'package:univa_task/utils/app_text_style.dart';
 
 class AuthPage extends StatefulWidget {
@@ -105,21 +106,18 @@ class _HomePageState extends State<AuthPage> {
                                         String password =
                                             model.passwordController.text;
 
-                                        print(
-                                            "email =-============================> $email");
-                                        print(
-                                            "email =-============================> $password");
-
                                         await model.login(
                                             email: email,
                                             password: password,
                                             onSuccess: (msg) {
-                                              print(
-                                                  "All good ===================>  $msg");
+                                              AppFlushBar.showSuccess(
+                                                  message: msg,
+                                                  context: context);
                                             },
                                             onError: (msg) {
-                                              print(
-                                                  "/errir ====================> $msg");
+                                              AppFlushBar.showError(
+                                                  message: msg,
+                                                  context: context);
                                             });
                                       }
                                     }),

@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:univa_task/app/core/failure/failure.dart';
 import 'package:univa_task/data/remote/auth_service.dart';
@@ -47,14 +46,11 @@ class AuthViewModel extends BaseViewModel {
   }) async {
     try {
       isAuthenticating = true;
-      Response? res = await authService.login(email: email, password: password);
-      bool successStatus = res?.data["success"] ?? false;
-      String message = res?.data["message"] ?? "";
+     await authService.login(email: email, password: password);
 
+      String message = "login successfully";
       isAuthenticating = false;
-      if (successStatus == false) {
-        throw Failure(message);
-      }
+
       onSuccess(message);
     } on Failure catch (e) {
       isAuthenticating = false;
