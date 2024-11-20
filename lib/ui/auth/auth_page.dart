@@ -18,6 +18,8 @@ class AuthPage extends StatefulWidget {
 }
 
 class _HomePageState extends State<AuthPage> {
+  final formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -56,7 +58,8 @@ class _HomePageState extends State<AuthPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SizedBox(
+                          Form(
+                            key: formKey,
                             child: Column(
                               children: [
                                 SizedBox(height: size.height * .04),
@@ -66,20 +69,60 @@ class _HomePageState extends State<AuthPage> {
                                       fontWeight: FontWeight.w500),
                                 ),
                                 SizedBox(height: size.height * .04),
-                                const CustumeTextInput(
+                                CustumeTextInput(
                                   labelText: "Email",
+                                  controller: model.emailController,
+                                  validator: (val) => model.validateEmail(val),
                                 ),
                                 SizedBox(height: size.height * .02),
                                 CustumeTextInput(
                                   labelText: "Password",
-                                  obscureText: true,
-                                  suffixIcon: Icon(
-                                    Icons.visibility,
-                                    color: AppColors.grey,
-                                  ),
+                                  controller: model.passwordController,
+                                  obscureText: model.obscurePassword,
+                                  validator: (val) =>
+                                      model.validatePassword(val, 6),
+                                  suffixIcon: IconButton(
+                                      onPressed: () {
+                                        model.obscurePassword =
+                                            !model.obscurePassword;
+                                      },
+                                      icon: Icon(
+                                        Icons.visibility,
+                                        color: model.obscurePassword
+                                            ? AppColors.grey
+                                            : AppColors.black.withOpacity(0.5),
+                                      )),
                                 ),
                                 SizedBox(height: size.height * .06),
-                                ActionButton(title: "Continue", onTap: () {}),
+                                ActionButton(
+                                    title: "Continue",
+                                    isLoading: model.isAuthenticating,
+                                    onTap: () async {
+                                      if (!model.isAuthenticating &&
+                                          formKey.currentState!.validate()) {
+                                        String email =
+                                            model.emailController.text;
+                                        String password =
+                                            model.passwordController.text;
+
+                                        print(
+                                            "email =-============================> $email");
+                                        print(
+                                            "email =-============================> $password");
+
+                                        await model.login(
+                                            email: email,
+                                            password: password,
+                                            onSuccess: (msg) {
+                                              print(
+                                                  "All good ===================>  $msg");
+                                            },
+                                            onError: (msg) {
+                                              print(
+                                                  "/errir ====================> $msg");
+                                            });
+                                      }
+                                    }),
                               ],
                             ),
                           ),
