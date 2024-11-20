@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:univa_task/ui/widgets/action_button.dart';
+import 'package:univa_task/ui/widgets/app_logo.dart';
 import 'package:univa_task/ui/widgets/custome_text_input.dart';
 import 'package:univa_task/ui/widgets/unfocus_widget.dart';
 import 'package:univa_task/utils/app_colors.dart';
@@ -25,13 +26,22 @@ class _HomePageState extends State<HomePage> {
         child: Stack(
           alignment: Alignment.bottomCenter,
           children: [
+            SizedBox(
+              height: size.height,
+              child: Column(
+                children: [
+                  SizedBox(height: size.height * .11),
+                  const AppLogo(),
+                ],
+              ),
+            ),
             Container(
                 padding: EdgeInsets.symmetric(horizontal: size.width * .05),
                 height: size.height * .75,
                 decoration: BoxDecoration(
                   color: AppColors.white,
                   borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(30.0), // Adjust radius as needed
+                    topLeft: Radius.circular(30.0),
                     topRight: Radius.circular(30.0),
                   ),
                 ),
@@ -61,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           SizedBox(height: size.height * .06),
-                           ActionButton(title: "Continue", onTap: () {}),
+                          ActionButton(title: "Continue", onTap: () {}),
                         ],
                       ),
                     ),
