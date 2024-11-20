@@ -108,20 +108,31 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                   if (model.tasks.isNotEmpty)
-                    ListView.builder(
-                        padding:
-                            EdgeInsets.symmetric(vertical: size.height * .02),
-                        shrinkWrap: true,
-                        itemCount: model.tasks.length,
-                        itemBuilder: (context, index) {
-                          return Column(
-                            children: [
-                              TaskWidget(task: model.tasks[index]),
-                              if (index != model.tasks.length - 1)
-                                const Divider()
-                            ],
-                          );
-                        }),
+                    RefreshIndicator(
+                      onRefresh: () async {
+                        model.fetchTasks(onError: (errorMessage) {
+                          AppFlushBar.showError(
+                              message: errorMessage, context: context);
+                        });
+                      },
+                      child: SizedBox(
+                        height: size.height * .82,
+                        child: ListView.builder(
+                            padding: EdgeInsets.symmetric(
+                                vertical: size.height * .02),
+                            shrinkWrap: true,
+                            itemCount: model.tasks.length,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                children: [
+                                  TaskWidget(task: model.tasks[index]),
+                                  if (index != model.tasks.length - 1)
+                                    const Divider()
+                                ],
+                              );
+                            }),
+                      ),
+                    ),
                 ],
               ),
             ),
