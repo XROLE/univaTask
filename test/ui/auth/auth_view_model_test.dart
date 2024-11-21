@@ -17,8 +17,8 @@ void main() {
 
   group('AuthViewModel Tests', () {
     test('should change obscurePassword state when setter is called', () {
-      expect(authViewModel.obscurePassword, true); 
-      authViewModel.obscurePassword = false; 
+      expect(authViewModel.obscurePassword, true);
+      authViewModel.obscurePassword = false;
 
       expect(authViewModel.obscurePassword, false);
     });
@@ -37,7 +37,9 @@ void main() {
       when(() => mockAuthService.login(
             email: 'test@example.com',
             password: 'password',
-          )).thenAnswer((_) async {});
+          )).thenAnswer((_) async {
+        return;
+      });
 
       await authViewModel.login(
         email: 'test@example.com',
@@ -46,14 +48,16 @@ void main() {
         onError: (_) {},
       );
 
-      expect(authViewModel.isAuthenticating, false); 
+      expect(authViewModel.isAuthenticating, false);
     });
 
     test('should handle successful login', () async {
       when(() => mockAuthService.login(
             email: 'test@example.com',
             password: 'password',
-          )).thenAnswer((_) async {});
+          )).thenAnswer((_) async {
+        return;
+      });
 
       bool onSuccessCalled = false;
       bool onErrorCalled = false;
