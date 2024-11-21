@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:univa_task/app/core/di/service_locator.dart';
+import 'package:univa_task/data/local/task_service.dart';
+import 'package:univa_task/data/model/task_model.dart';
 import 'package:univa_task/data/remote/task_service.dart';
 import 'package:univa_task/ui/auth/auth_page.dart';
 import 'package:univa_task/ui/base/base_view.dart';
@@ -22,11 +24,18 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return BaseView<HomeViewModel>(
-        model: HomeViewModel(sl.get<TaskService>()),
-        onModelReady: (model) {
-          model.fetchTasks(onError: (errorMessage) {
-            AppFlushBar.showError(message: errorMessage, context: context);
-          });
+        model: HomeViewModel(
+          taskCacheService: sl.get<TaskCacheService>(),
+          taskService: sl.get<TaskService>(),
+        ),
+        onModelReady: (model) async {
+          List<Task> tasksFromCache = await model.loadCachedTasks();
+          model.tasks = tasksFromCache;
+          model.fetchTasks(
+              onError: (errorMessage) {
+                AppFlushBar.showError(message: errorMessage, context: context);
+              },
+              onSuccess: (tasks) => model.cachedTasks(tasks));
         },
         builder: (context, model, _) {
           return Scaffold(
@@ -107,13 +116,18 @@ class _HomePageState extends State<HomePage> {
                           icon: const Icon(Icons.menu))
                     ],
                   ),
-                  if (model.tasks.isNotEmpty)
-                    RefreshIndicator(
+                  model.tasks.isEmpty 
+                  ? SizedBox(
+                    height: size.height * .6,
+                    child: Center(child: Text("No task at the moment. \n Kindly create a new task to get started", style: AppTextStyle.medium(), textAlign: TextAlign.center,),))
+                   : RefreshIndicator(
                       onRefresh: () async {
-                        model.fetchTasks(onError: (errorMessage) {
-                          AppFlushBar.showError(
-                              message: errorMessage, context: context);
-                        });
+                        model.fetchTasks(
+                            onError: (errorMessage) {
+                              AppFlushBar.showError(
+                                  message: errorMessage, context: context);
+                            },
+                            onSuccess: (tasks) => model.cachedTasks(tasks));
                       },
                       child: SizedBox(
                         height: size.height * .82,
