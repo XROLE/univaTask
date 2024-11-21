@@ -1,9 +1,9 @@
 # Task 1
 
-A simple, functional, and modern Task Manager App built with Flutter, showcasing essential features like user authentication, task management, offline support, and smooth transitions from the Login page to the dashboard. 
-This project is built with scalability, maintanability and testability in mind. It demostrates the use of MVVM architecture, Dependency injection, Modularity and automated code generation (using build runner).
+A simple, functional, and modern Task Manager App built with Flutter, showcases essential features like user authentication, task management, offline support, and smooth transitions from the Login page to the dashboard. 
+This project is built with scalability, maintainability, and testability in mind. It demonstrates the use of MVVM architecture, Dependency injection, Modularity and automated code generation (using build runner).
 
-<br><br>
+<br>
 ## Screenshots
 <img src = "https://github.com/user-attachments/assets/99ece383-fad8-47cd-9c10-39f743c1d43a" width="320" /> &nbsp; &nbsp;
 <img src = "https://github.com/user-attachments/assets/c1daa65b-e186-4be9-929a-649f97efa7bc" width="320" />
@@ -11,7 +11,7 @@ This project is built with scalability, maintanability and testability in mind. 
 <img src = "https://github.com/user-attachments/assets/5a2d8a58-3544-4910-8728-279eb264ee72" width="320" /> &nbsp; &nbsp;
 <img src = "https://github.com/user-attachments/assets/1afb210e-2fd3-40ea-9e9c-b96d940a6ec1" width="320" /> 
 
-<br> <br>
+<br> 
 ## Features
 1. Login Screen
 Secure login functionality with email and password.
@@ -32,7 +32,7 @@ Comprehensive testing:
 Unit tests for core functionality.
 Widget tests for key components.
 
-<br><br>
+<br>
 ## Getting Started
 
 Ensure you have the following installed:
@@ -62,7 +62,7 @@ flutter pub run build_runner build --delete-conflicting-outputs
 ``` 
 flutter run 
 ```
-<br><br>
+<br>
 ## Automated Test
 1. All the test can be found in:
 ```
