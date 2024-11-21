@@ -1,16 +1,57 @@
-# univa_task
+# Mini Task Manager App
 
-A new Flutter project.
+A simple, functional, and modern Task Manager App built with Flutter, showcasing essential features like user authentication, task management, offline support, and smooth transitions from the Login page to the dashboard. 
+This project is built with scalability, maintanability and testability in mind. It demostrates the use of MVVM architecture, Dependency injection, Modularity and automated code generation (using build runner).
+
+## Features
+1. Login Screen
+Secure login functionality with email and password.
+Input validation for email format and a minimum password length of 6 characters.
+Mock API integration to simulate login.
+2. Task Dashboard
+Displays a paginated list of tasks fetched from a mock API.
+Users can mark tasks as Complete or Incomplete.
+Includes Pull to Refresh functionality for seamless task updates.
+3. State Management
+Powered by Provider or Riverpod to efficiently manage application state.
+4. Offline Caching
+Stores task lists locally using Hive or SharedPreferences to ensure functionality when offline.
+5. Transitions and Animations
+Smooth and visually appealing transition animations between the login screen and the task dashboard.
+6. Testing
+Comprehensive testing:
+Unit tests for core functionality.
+Widget tests for key components.
+
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Ensure you have the following installed:
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter SDK
+- Dart
+- An IDE such as VS Code or Android Studio.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Installation
+1. Clone the repository:
+```
+git clone https://github.com/XROLE/univaTask.git
+cd mini-task-manager 
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2. Fetch the dependencies:
+``` 
+flutter pub get 
+```
+
+3. Run code generation:
+``` 
+flutter pub run build_runner build --delete-conflicting-outputs 
+```
+
+4. Run the app:
+``` 
+flutter run 
+```
+
+
