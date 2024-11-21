@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-11-21 10:55:35</td>
+            <td class="headerValue">2024-11-21 11:53:14</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -69,59 +69,59 @@
 <span id="L7"><span class="lineNum">       7</span>              : </span>
 <span id="L8"><span class="lineNum">       8</span>              : class AuthViewModel extends BaseViewModel {</span>
 <span id="L9"><span class="lineNum">       9</span>              :   final AuthService authService;</span>
-<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC tlaBgGNC">           1 :   AuthViewModel(this.authService);</span></span>
+<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC tlaBgGNC">           2 :   AuthViewModel(this.authService);</span></span>
 <span id="L11"><span class="lineNum">      11</span>              : </span>
 <span id="L12"><span class="lineNum">      12</span>              :   TextEditingController emailController = TextEditingController();</span>
 <span id="L13"><span class="lineNum">      13</span>              :   TextEditingController passwordController = TextEditingController();</span>
 <span id="L14"><span class="lineNum">      14</span>              : </span>
 <span id="L15"><span class="lineNum">      15</span>              :   bool _obscurePassword = true;</span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">           2 :   bool get obscurePassword =&gt; _obscurePassword;</span></span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">           4 :   bool get obscurePassword =&gt; _obscurePassword;</span></span>
 <span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">           1 :   set obscurePassword(bool val) {</span></span>
 <span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">           1 :     _obscurePassword = val;</span></span>
 <span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">           1 :     notifyListeners();</span></span>
 <span id="L20"><span class="lineNum">      20</span>              :   }</span>
 <span id="L21"><span class="lineNum">      21</span>              : </span>
 <span id="L22"><span class="lineNum">      22</span>              :   bool _isAuthenticating = false;</span>
-<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">           2 :   bool get isAuthenticating =&gt; _isAuthenticating;</span></span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           1 :   set isAuthenticating(bool val) {</span></span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           1 :     _isAuthenticating = val;</span></span>
-<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           1 :     notifyListeners();</span></span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">           4 :   bool get isAuthenticating =&gt; _isAuthenticating;</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           2 :   set isAuthenticating(bool val) {</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           2 :     _isAuthenticating = val;</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           2 :     notifyListeners();</span></span>
 <span id="L27"><span class="lineNum">      27</span>              :   }</span>
 <span id="L28"><span class="lineNum">      28</span>              : </span>
-<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">           1 :   String? validateEmail(String? email) {</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">           2 :   String? validateEmail(String? email) {</span></span>
 <span id="L30"><span class="lineNum">      30</span>              :     String error = &quot;invalid email&quot;;</span>
 <span id="L31"><span class="lineNum">      31</span>              :     if (email == null) return error;</span>
 <span id="L32"><span class="lineNum">      32</span>              : </span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           2 :     return AppValidator().isValidEmail(email) ? null : error;</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           4 :     return AppValidator().isValidEmail(email) ? null : error;</span></span>
 <span id="L34"><span class="lineNum">      34</span>              :   }</span>
 <span id="L35"><span class="lineNum">      35</span>              : </span>
-<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           1 :   String? validatePassword(String? password, int len) {</span></span>
-<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">           1 :     return AppValidator()</span></span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           1 :         .validateLength(title: &quot;Password&quot;, val: password, len: len);</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           2 :   String? validatePassword(String? password, int len) {</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">           2 :     return AppValidator()</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           2 :         .validateLength(title: &quot;Password&quot;, val: password, len: len);</span></span>
 <span id="L39"><span class="lineNum">      39</span>              :   }</span>
 <span id="L40"><span class="lineNum">      40</span>              : </span>
-<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">           1 :   Future&lt;void&gt; login({</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">           2 :   Future&lt;void&gt; login({</span></span>
 <span id="L42"><span class="lineNum">      42</span>              :     required String email,</span>
 <span id="L43"><span class="lineNum">      43</span>              :     required String password,</span>
 <span id="L44"><span class="lineNum">      44</span>              :     required Function(String e) onSuccess,</span>
 <span id="L45"><span class="lineNum">      45</span>              :     required Function(String e) onError,</span>
 <span id="L46"><span class="lineNum">      46</span>              :   }) async {</span>
 <span id="L47"><span class="lineNum">      47</span>              :     try {</span>
-<span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">           1 :       isAuthenticating = true;</span></span>
-<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">           2 :      await authService.login(email: email, password: password);</span></span>
+<span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">           2 :       isAuthenticating = true;</span></span>
+<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">           4 :      await authService.login(email: email, password: password);</span></span>
 <span id="L50"><span class="lineNum">      50</span>              : </span>
 <span id="L51"><span class="lineNum">      51</span>              :       String message = &quot;login successfully&quot;;</span>
 <span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">           1 :       isAuthenticating = false;</span></span>
 <span id="L53"><span class="lineNum">      53</span>              : </span>
 <span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">           1 :       onSuccess(message);</span></span>
-<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">           1 :     } on Failure catch (e) {</span></span>
-<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">           1 :       isAuthenticating = false;</span></span>
-<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">           2 :       onError(e.errorMessage);</span></span>
-<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">           3 :       debugPrint(&quot;FAilure ==============&gt; $e&quot;);</span></span>
+<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">           2 :     } on Failure catch (e) {</span></span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">           2 :       isAuthenticating = false;</span></span>
+<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">           4 :       onError(e.errorMessage);</span></span>
+<span id="L58"><span class="lineNum">      58</span> <span class="tlaGNC">           6 :       debugPrint(&quot;FAilure ==============&gt; $e&quot;);</span></span>
 <span id="L59"><span class="lineNum">      59</span>              :     } catch (e) {</span>
-<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">           1 :       isAuthenticating = false;</span></span>
-<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">           1 :       onError(ErrorText.generic);</span></span>
-<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">           3 :       debugPrint(&quot;Error ==============&gt; $e&quot;);</span></span>
+<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">           2 :       isAuthenticating = false;</span></span>
+<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">           2 :       onError(ErrorText.generic);</span></span>
+<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">           6 :       debugPrint(&quot;Error ==============&gt; $e&quot;);</span></span>
 <span id="L63"><span class="lineNum">      63</span>              :     }</span>
 <span id="L64"><span class="lineNum">      64</span>              :   }</span>
 <span id="L65"><span class="lineNum">      65</span>              : }</span>
