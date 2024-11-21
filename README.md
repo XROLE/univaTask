@@ -1,4 +1,4 @@
-# Mini Task Manager App
+# Task 1
 
 A simple, functional, and modern Task Manager App built with Flutter, showcasing essential features like user authentication, task management, offline support, and smooth transitions from the Login page to the dashboard. 
 This project is built with scalability, maintanability and testability in mind. It demostrates the use of MVVM architecture, Dependency injection, Modularity and automated code generation (using build runner).
@@ -62,5 +62,54 @@ flutter pub run build_runner build --delete-conflicting-outputs
 ``` 
 flutter run 
 ```
+
+## Automated Test
+1. All the test can be found in:
+```
+test/
+```
+
+2. To run the test
+```
+flutter test
+```
+
+3. To run the test and see the test coverage, follow the three steps below
+- run the test with coverage flag
+```
+flutter test ---coverage
+```
+- generate html file from the coverage directory generated in the previous step
+```
+genhtml coverare/lcov.info -o coverage/html
+```
+
+- open the generated html file to see the test coverage
+```
+open coverage/html/index.html
+```
+
+
+
+# Task 2
+Create a function in Dart that organizes tasks by grouping them based on priority and sorting each group by their deadlines in ascending order. The function should return a map where the keys are priorities, and the values are sorted lists of task names.
+
+## Solution
+1. The solution to this problem can be found in: 
+```
+lib/task_2/tast_2.dart
+```
+
+2. The solution to the test can be found in:
+```
+test/task_2/task_2_test.dart
+```
+
+3. To run the test:
+```
+flutter test test/task_2/task_2_test.dart
+```
+
+
 
 
