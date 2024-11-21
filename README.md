@@ -9,9 +9,9 @@ This project is built with scalability, maintainability, and testability in mind
 <img src = "https://github.com/user-attachments/assets/c1daa65b-e186-4be9-929a-649f97efa7bc" width="320" />
 <br/><br/>
 <img src = "https://github.com/user-attachments/assets/5a2d8a58-3544-4910-8728-279eb264ee72" width="320" /> &nbsp; &nbsp;
-<img src = "https://github.com/user-attachments/assets/1afb210e-2fd3-40ea-9e9c-b96d940a6ec1" width="320" /> 
+<img src = "https://github.com/user-attachments/assets/1afb210e-2fd3-40ea-9e9c-b96d940a6ec1" width="320" /> <br/>
 
-<br/> 
+ 
 ## Features
 1. Login Screen
 Secure login functionality with email and password.
@@ -30,9 +30,9 @@ Smooth and visually appealing transition animations between the login screen and
 6. Testing
 Comprehensive testing:
 Unit tests for core functionality.
-Widget tests for key components.
+Widget tests for key components.<br>
 
-<br>
+
 ## Getting Started
 
 Ensure you have the following installed:
@@ -63,6 +63,8 @@ flutter pub run build_runner build --delete-conflicting-outputs
 flutter run 
 ```
 <br>
+
+
 ## Automated Test
 1. All the test can be found in:
 ```
