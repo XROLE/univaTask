@@ -7,7 +7,6 @@ import 'package:univa_task/app/core/failure/failure.dart';
 import 'package:univa_task/ui/auth/auth_page.dart';
 import 'package:univa_task/ui/auth/auth_view_model.dart';
 import 'package:univa_task/data/remote/auth_service.dart';
-import 'package:univa_task/ui/home/home_page.dart';
 import 'package:univa_task/ui/widgets/action_button.dart';
 import 'package:univa_task/ui/widgets/app_logo.dart';
 import 'package:univa_task/ui/widgets/custome_text_input.dart';
