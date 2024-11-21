@@ -4,10 +4,10 @@ A simple, functional, and modern Task Manager App built with Flutter, showcasing
 This project is built with scalability, maintanability and testability in mind. It demostrates the use of MVVM architecture, Dependency injection, Modularity and automated code generation (using build runner).
 
 ## Screenshots
-<img src = "https://github.com/user-attachments/assets/99ece383-fad8-47cd-9c10-39f743c1d43a" width="320"/> &nbsp; &nbsp;
-<img src = "https://github.com/user-attachments/assets/5a2d8a58-3544-4910-8728-279eb264ee72" width="320"/> 
-<br/>;<br/>;
+<img src = "https://github.com/user-attachments/assets/99ece383-fad8-47cd-9c10-39f743c1d43a" width="320" height = "400"/> &nbsp; &nbsp;
 <img src = "https://github.com/user-attachments/assets/c1daa65b-e186-4be9-929a-649f97efa7bc" width="320"/>
+<br/><br/>
+<img src = "https://github.com/user-attachments/assets/5a2d8a58-3544-4910-8728-279eb264ee72" width="320"/> 
 
 
 ## Features
