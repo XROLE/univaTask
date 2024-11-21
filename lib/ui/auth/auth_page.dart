@@ -6,6 +6,7 @@ import 'package:univa_task/ui/base/base_view.dart';
 import 'package:univa_task/ui/home/home_page.dart';
 import 'package:univa_task/ui/widgets/action_button.dart';
 import 'package:univa_task/ui/widgets/app_logo.dart';
+import 'package:univa_task/ui/widgets/custom_page_route_builder.dart';
 import 'package:univa_task/ui/widgets/custome_text_input.dart';
 import 'package:univa_task/ui/widgets/unfocus_widget.dart';
 import 'package:univa_task/utils/app_colors.dart';
@@ -111,11 +112,7 @@ class _HomePageState extends State<AuthPage> {
                                             email: email,
                                             password: password,
                                             onSuccess: (msg) {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          const HomePage()));
+                                             Navigator.of(context).push(CustomPageRouteBuilder(child: const HomePage()));
                                               AppFlushBar.showSuccess(
                                                   message: msg,
                                                   context: context);

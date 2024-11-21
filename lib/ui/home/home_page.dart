@@ -99,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                                                   title: "Continue",
                                                   bgColor: AppColors.red,
                                                   onTap: () {
-                                                    Navigator.pushReplacement(
+                                                    Navigator.push(
                                                         context,
                                                         MaterialPageRoute(
                                                             builder: (context) =>
@@ -116,37 +116,43 @@ class _HomePageState extends State<HomePage> {
                           icon: const Icon(Icons.menu))
                     ],
                   ),
-                  model.tasks.isEmpty 
-                  ? SizedBox(
-                    height: size.height * .6,
-                    child: Center(child: Text("No task at the moment. \n Kindly create a new task to get started", style: AppTextStyle.medium(), textAlign: TextAlign.center,),))
-                   : RefreshIndicator(
-                      onRefresh: () async {
-                        model.fetchTasks(
-                            onError: (errorMessage) {
-                              AppFlushBar.showError(
-                                  message: errorMessage, context: context);
-                            },
-                            onSuccess: (tasks) => model.cachedTasks(tasks));
-                      },
-                      child: SizedBox(
-                        height: size.height * .82,
-                        child: ListView.builder(
-                            padding: EdgeInsets.symmetric(
-                                vertical: size.height * .02),
-                            shrinkWrap: true,
-                            itemCount: model.tasks.length,
-                            itemBuilder: (context, index) {
-                              return Column(
-                                children: [
-                                  TaskWidget(task: model.tasks[index]),
-                                  if (index != model.tasks.length - 1)
-                                    const Divider()
-                                ],
-                              );
-                            }),
-                      ),
-                    ),
+                  model.tasks.isEmpty
+                      ? SizedBox(
+                          height: size.height * .6,
+                          child: Center(
+                            child: Text(
+                              "No task at the moment. \n Kindly create a new task to get started",
+                              style: AppTextStyle.medium(),
+                              textAlign: TextAlign.center,
+                            ),
+                          ))
+                      : RefreshIndicator(
+                          onRefresh: () async {
+                            model.fetchTasks(
+                                onError: (errorMessage) {
+                                  AppFlushBar.showError(
+                                      message: errorMessage, context: context);
+                                },
+                                onSuccess: (tasks) => model.cachedTasks(tasks));
+                          },
+                          child: SizedBox(
+                            height: size.height * .82,
+                            child: ListView.builder(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: size.height * .02),
+                                shrinkWrap: true,
+                                itemCount: model.tasks.length,
+                                itemBuilder: (context, index) {
+                                  return Column(
+                                    children: [
+                                      TaskWidget(task: model.tasks[index]),
+                                      if (index != model.tasks.length - 1)
+                                        const Divider()
+                                    ],
+                                  );
+                                }),
+                          ),
+                        ),
                 ],
               ),
             ),
